@@ -15,11 +15,12 @@ Also, you can configure case sensitive for operators (for example, supports "and
 
 ## Example
 
-iOS (Generating blocks for using `array.filter(_:)`)
-![iOS](https://github.com/AlexIzh/SearchQueryParser/blob/master/Gifs/ios.gif)
+iOS (Generating blocks for using `array.filter(_:)`) and Mac (generating `NSPredicate` for using with `CoreData`)
 
-Mac (generating `NSPredicate` for using with `CoreData`)
-![Mac](https://github.com/AlexIzh/SearchQueryParser/blob/master/Gifs/mac.gif)
+<img src="https://github.com/AlexIzh/SearchQueryParser/blob/master/Gifs/ios.gif" width="200"/> <img src="https://github.com/AlexIzh/SearchQueryParser/blob/master/Gifs/mac.gif" width="600"/>
+
+
+
 
 ## Using
 
