@@ -3,14 +3,19 @@ Parsing search string and generate predicates or filtering blocks from it.
 
 #### Public API isn't latest version and will be updated later. Current version of API is ugly, I know.
 
-Current framework allows to use logical operators with search (like `SearchKit`). But only you don't need to generate `Index` file for it. 
+Current framework allows to use logical operators with search (like `SearchKit`). But only you don't need to generate `Index` file for using it.
 
-Factory supports custom operators, but also you can use default factory with next operators:</br>
-1/ `AND`, `&` </br>
-2/ `OR`, `|` </br>
-3/ `NOT`, `!` </br>
+Goal of this framework is generating one `NSPredicate`, closure, another filtering entities for using them for searching in array, database or any other sources.
 
-Also, you can configure case sensitive for operators (for example, supports "and", "or", "not" also).  
+Default entities supports `AND, &`, `OR, |`, `NOT, !` operators, but you can create custom operators yourself.
+
+Default query operators (from highest to lowest precedence):
+
+Operator | Meaning 
+ --- | --- 
+ `NOT`, ! | Boolean NOT. 
+ `AND`, &, `<space>` | Boolean AND. The <space> character represents a Boolean operator when there are terms to both sides of the <space> character. In this case, <space> represents a Boolean AND by default, or a Boolean OR if specified by .spaceMeansOR option. 
+ `OR`, &#124; | Boolean inclusive OR. 
 
 
 ## Example
@@ -24,37 +29,23 @@ iOS (Generating blocks for using `array.filter(_:)`) and Mac (generating `NSPred
 
 ## Using
 
+It's pretty easy! You just need to create builder and define predicate/block for one token(small part of search string), after it you can generate predicates/blocks from any string.
+
+Example with blocks:
 ```swift
 import SearchQueryParser
 
-let factory = DefaultSearchQueryFactory(isCaseSensetive: false) // Create factory with default operators
+let builder = DefaultFilterBlockBuilder<Item>(options: .caseInsensitive, valuePredicate: { str in
+	return { $0.searchString.lowercased().contains(str.lowercased()) }
+})
 
-let blocksBuilder = DefaultFilterBlockBuilder<Item>(valuePredicate: { str in // Create builder with default operators for generating blocks
-    return { $0.searchString.lowercased().contains(str.lowercased()) } // return closure for filtering one part of search string, string will be splitted automatically
-  }) 
-  /// OR, if you use NSPredicate
-let builder = DefaultPredicateBuilder() { // Create Predicate's builder for default operators 
-      // Create predicate for one part of search string, string will be splitted automatically
-      
-			if let age = Int32($0) { // if component is number, then search for age
-				if self.moreButton.state == NSOnState {
-					return NSPredicate(format: "age > %d", age)
-				} else if self.lessButton.state == NSOnState {
-					return NSPredicate(format: "age < %d", age)
-				}
-				return NSPredicate(format: "age = %d", age)
-			} else { // otherwise, search for name or job with LIKE (supporting ?, * symbools)
-				return NSPredicate(format: "(name LIKE[c] %@) OR (job LIKE[c] %@)", $0, $0) 
-			}
-		}
-    //generate 
-    let query = factory.makeQuery(for: searchField.stringValue)
-    DispatchQueue.global().async {
-        let operators = query.queryOperators //parsing string and generates special operators. Basically this array will contain only one element or will be empty.
-        if let operator = operators.first {
-          var predicate = builder.build(from: operator) // build predicate from operator
-          DispatchQueue.main.async { self.predicate = predicate }
-        }
-    }
+let filterBlock = builder.build(from: searchText)
+filteredItems = array.filter(filterBlock ?? {_ in true})
+```
+Example with `NSPredicate`:
+```swift
+import SearchQueryParser
 
+let builder = DefaultPredicateBuilder() { NSPredicate(format: "(name LIKE[c] %@) OR (job LIKE[c] %@)", $0, $0) }
+self.predicate = builder.build(from: searchField.stringValue)
 ```
