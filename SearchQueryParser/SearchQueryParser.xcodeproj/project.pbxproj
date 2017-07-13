@@ -32,6 +32,9 @@
 		FAD9593C1F14FC7200E8DBBD /* TokensGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD9593B1F14FC7200E8DBBD /* TokensGenerator.swift */; };
 		FAD9593D1F14FD9C00E8DBBD /* TokensGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD9593B1F14FC7200E8DBBD /* TokensGenerator.swift */; };
 		FAD9593E1F14FD9D00E8DBBD /* TokensGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD9593B1F14FC7200E8DBBD /* TokensGenerator.swift */; };
+		FAED58DB1F173DB7009F8B8E /* DefaultSearchQueryFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAED58DA1F173DB7009F8B8E /* DefaultSearchQueryFactory.swift */; };
+		FAED58DC1F173DBC009F8B8E /* DefaultSearchQueryFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAED58DA1F173DB7009F8B8E /* DefaultSearchQueryFactory.swift */; };
+		FAED58DD1F173DBC009F8B8E /* DefaultSearchQueryFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAED58DA1F173DB7009F8B8E /* DefaultSearchQueryFactory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +67,7 @@
 		FA2444F01F13B78E00A52D74 /* TokensGeneratorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokensGeneratorTests.swift; sourceTree = "<group>"; };
 		FAD9593B1F14FC7200E8DBBD /* TokensGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokensGenerator.swift; sourceTree = "<group>"; };
 		FAED58D71F1733D1009F8B8E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		FAED58DA1F173DB7009F8B8E /* DefaultSearchQueryFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultSearchQueryFactory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +125,7 @@
 				FA2444BC1F139BCC00A52D74 /* SearchQueryParser.h */,
 				FA1CBD9E1F161D2C003EE451 /* SearchQuery.swift */,
 				FA1CBDA21F1686BA003EE451 /* SearchQueryFactory.swift */,
+				FAED58DA1F173DB7009F8B8E /* DefaultSearchQueryFactory.swift */,
 				FA2444BD1F139BCC00A52D74 /* Info.plist */,
 				FA2444E91F13A30000A52D74 /* QueryOperator.swift */,
 				FA1CBD9A1F161848003EE451 /* ReversePolishNotation.swift */,
@@ -311,6 +316,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA2444EA1F13A30000A52D74 /* QueryOperator.swift in Sources */,
+				FAED58DB1F173DB7009F8B8E /* DefaultSearchQueryFactory.swift in Sources */,
 				FA2444EE1F13B68600A52D74 /* Tokenizer.swift in Sources */,
 				FA1CBD9F1F161D2C003EE451 /* SearchQuery.swift in Sources */,
 				FA1CBD9B1F161848003EE451 /* ReversePolishNotation.swift in Sources */,
@@ -326,6 +332,7 @@
 				FA1CBD9C1F161848003EE451 /* ReversePolishNotation.swift in Sources */,
 				FA2444EC1F13A30500A52D74 /* QueryOperator.swift in Sources */,
 				FA1CBDA01F161D2C003EE451 /* SearchQuery.swift in Sources */,
+				FAED58DD1F173DBC009F8B8E /* DefaultSearchQueryFactory.swift in Sources */,
 				FA1CBDA41F1686BA003EE451 /* SearchQueryFactory.swift in Sources */,
 				FA2444F21F13B7B100A52D74 /* Tokenizer.swift in Sources */,
 				FA2444C81F139BCC00A52D74 /* SearchQueryParserTests.swift in Sources */,
@@ -341,6 +348,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA2444EB1F13A30000A52D74 /* QueryOperator.swift in Sources */,
+				FAED58DC1F173DBC009F8B8E /* DefaultSearchQueryFactory.swift in Sources */,
 				FA2444EF1F13B68600A52D74 /* Tokenizer.swift in Sources */,
 				FA1CBDA11F161D2C003EE451 /* SearchQuery.swift in Sources */,
 				FA1CBD9D1F161848003EE451 /* ReversePolishNotation.swift in Sources */,

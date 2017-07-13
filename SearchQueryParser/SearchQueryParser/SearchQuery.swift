@@ -14,7 +14,7 @@ public class SearchQuery<Item: Operator> {
 	public let operators: [Item: [String]]
 	public let whitespaceOperator: Item
 	
-	public let isCaseSensitive = true
+	public let isCaseSensitive: Bool
 	public var queryOperators: [QueryOperator<Item>] {
 		if _queryOperators == nil {
 			parseQueryIfNeeded()
@@ -24,11 +24,14 @@ public class SearchQuery<Item: Operator> {
 	
 	private var _queryOperators: [QueryOperator<Item>]?
 	
-	public init(_ string: String, operators: [Item: [String]], whitespaceOperator: Item) {
+	public init(_ string: String, isCaseSensitive: Bool = true, operators: [Item: [String]], whitespaceOperator: Item) {
 		precondition(whitespaceOperator.type == .binary, "whitespace operator (\(whitespaceOperator)) should be binary")
+		
 		self.string = string
 		self.operators = operators
 		self.whitespaceOperator = whitespaceOperator
+		
+		self.isCaseSensitive = isCaseSensitive
 	}
 	
 	public func parseQueryIfNeeded() {

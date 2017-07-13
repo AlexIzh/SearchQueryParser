@@ -65,8 +65,8 @@ class ViewController: UIViewController {
 
 extension ViewController: UISearchBarDelegate {
 	func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-		let filterBlock = builder.build(from: searchText) ?? { (Item) -> Bool in return true }
-		filteredItems = array.filter(filterBlock)
+		let filterBlock = builder.build(from: searchText)
+		filteredItems = array.filter(filterBlock ?? {_ in true})
 	}
 }
 
