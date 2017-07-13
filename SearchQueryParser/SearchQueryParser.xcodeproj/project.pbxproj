@@ -63,6 +63,7 @@
 		FA2444ED1F13B68600A52D74 /* Tokenizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tokenizer.swift; sourceTree = "<group>"; };
 		FA2444F01F13B78E00A52D74 /* TokensGeneratorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokensGeneratorTests.swift; sourceTree = "<group>"; };
 		FAD9593B1F14FC7200E8DBBD /* TokensGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokensGenerator.swift; sourceTree = "<group>"; };
+		FAED58D71F1733D1009F8B8E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +99,7 @@
 				FA2444C61F139BCC00A52D74 /* SearchQueryParserTests */,
 				FA2444D91F139BF600A52D74 /* OSXSearchQueryParser */,
 				FA2444BA1F139BCC00A52D74 /* Products */,
+				FAED58D61F1733D0009F8B8E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -145,6 +147,14 @@
 				FA2444DB1F139BF600A52D74 /* Info.plist */,
 			);
 			path = OSXSearchQueryParser;
+			sourceTree = "<group>";
+		};
+		FAED58D61F1733D0009F8B8E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FAED58D71F1733D1009F8B8E /* Foundation.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -454,6 +464,7 @@
 		FA2444CE1F139BCC00A52D74 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
@@ -475,6 +486,7 @@
 		FA2444CF1F139BCC00A52D74 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;

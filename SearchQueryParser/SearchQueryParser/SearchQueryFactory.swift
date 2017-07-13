@@ -21,6 +21,17 @@ public enum DefaultOperator: Operator {
 	}
 }
 
+public struct DefaultOptions: OptionSet {
+	public let rawValue: Int
+	
+	public static let spaceMeansOR = DefaultOptions(rawValue: 1 << 0)
+	public static let caseInsensitive = DefaultOptions(rawValue: 1 << 1)
+	
+	public init(rawValue: Int) {
+		self.rawValue = rawValue
+	}
+}
+
 public struct PredicateBuilder<Element, Item> where Item: Operator {
 	let value: (String) -> Element
 	let binary: (Element, Item, Element) -> Element
@@ -41,9 +52,13 @@ public struct PredicateBuilder<Element, Item> where Item: Operator {
 }
 
 public struct DefaultPredicateBuilder {
-	private let builder: PredicateBuilder<NSPredicate, DefaultOperator>
 	
-	public init(valuePredicate: @escaping (String) -> NSPredicate) {
+	let options: DefaultOptions
+	
+	private let builder: PredicateBuilder<NSPredicate, DefaultOperator>
+	private let factory: DefaultSearchQueryFactory
+	
+	public init(options: DefaultOptions = [], valuePredicate: @escaping (String) -> NSPredicate) {
 		builder = PredicateBuilder(value: valuePredicate, binary: { predicate1, op, predicate2 in
 			switch op {
 			case .and:
@@ -58,6 +73,14 @@ public struct DefaultPredicateBuilder {
 		}, unary: { op, predicate in
 			return NSCompoundPredicate(notPredicateWithSubpredicate: predicate)
 		})
+		
+		factory = DefaultSearchQueryFactory(isCaseSensetive: !options.contains(.caseInsensitive), whitespaceIsAND: !options.contains(.spaceMeansOR))
+		self.options = options
+	}
+	
+	public func build(from searchString: String) -> NSPredicate? {
+		let operators = factory.makeQuery(for: searchString).queryOperators
+		return operators.first.map { builder.build(from: $0) }
 	}
 	
 	public func build(from query: QueryOperator<DefaultOperator>) -> NSPredicate {
@@ -68,9 +91,12 @@ public struct DefaultPredicateBuilder {
 public struct DefaultFilterBlockBuilder<Item> {
 	public typealias BlockType = (Item) -> Bool
 	
-	private let builder: PredicateBuilder<BlockType, DefaultOperator>
+	let options: DefaultOptions
 	
-	public init(valuePredicate: @escaping (String) -> BlockType) {
+	private let builder: PredicateBuilder<BlockType, DefaultOperator>
+	private let factory: DefaultSearchQueryFactory
+	
+	public init(options: DefaultOptions = [], valuePredicate: @escaping (String) -> BlockType) {
 		builder = PredicateBuilder(value: valuePredicate, binary: { predicate1, op, predicate2 in
 			switch op {
 			case .and:
@@ -85,6 +111,14 @@ public struct DefaultFilterBlockBuilder<Item> {
 		}, unary: { op, predicate in
 			return { !predicate($0) }
 		})
+		
+		factory = DefaultSearchQueryFactory(isCaseSensetive: !options.contains(.caseInsensitive), whitespaceIsAND: !options.contains(.spaceMeansOR))
+		self.options = options
+	}
+	
+	public func build(from searchString: String) -> BlockType? {
+		let operators = factory.makeQuery(for: searchString).queryOperators
+		return operators.first.map { builder.build(from: $0) }
 	}
 	
 	public func build(from query: QueryOperator<DefaultOperator>) -> BlockType {

@@ -20,7 +20,9 @@ class ViewController: UIViewController {
 	
 	@IBOutlet var tableView: UITableView!
 	
-	let factory = DefaultSearchQueryFactory(isCaseSensetive: false)
+	let builder = DefaultFilterBlockBuilder<Item>(options: .caseInsensitive, valuePredicate: { str in
+		return { $0.searchString.lowercased().contains(str.lowercased()) }
+	})
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -63,8 +65,7 @@ class ViewController: UIViewController {
 
 extension ViewController: UISearchBarDelegate {
 	func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-		let builder = DefaultFilterBlockBuilder<Item>(valuePredicate: { str in return { $0.searchString.lowercased().contains(str.lowercased()) }})
-		let filterBlock = factory.makeQuery(for: searchText).queryOperators.first.map({ builder.build(from: $0) }) ?? { (Item) -> Bool in return true }
+		let filterBlock = builder.build(from: searchText) ?? { (Item) -> Bool in return true }
 		filteredItems = array.filter(filterBlock)
 	}
 }

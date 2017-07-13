@@ -32,7 +32,6 @@ class ViewController: NSViewController {
 	dynamic var predicate: NSPredicate?
 	dynamic var managedObjectContext: NSManagedObjectContext!
 	
-	let factory = DefaultSearchQueryFactory()
 	var builder: DefaultPredicateBuilder!
 	
 	override func viewDidLoad() {
@@ -91,7 +90,7 @@ class ViewController: NSViewController {
 	}
 	
 	func search() {
-		predicate = factory.makeQuery(for: searchField.stringValue).queryOperators.first.map { builder.build(from: $0) } ?? nil
+		predicate = builder.build(from: searchField.stringValue)
 	}
 }
 
