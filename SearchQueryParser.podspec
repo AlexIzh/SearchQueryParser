@@ -22,6 +22,6 @@ Pod::Spec.new do |s|
 
   s.source       = { :git => "https://github.com/AlexIzh/SearchQueryParser.git", :tag => "#{s.version}" }
 
-  s.source_files  = 'SearchQueryParser/SearchQueryParser/*'
+  s.source_files  = 'SearchQueryParser/SearchQueryParser/*.swift', 'SearchQueryParser/SearchQueryParser/*.h'
 
 end
