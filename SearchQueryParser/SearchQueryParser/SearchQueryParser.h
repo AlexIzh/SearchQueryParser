@@ -6,8 +6,6 @@
 //  Copyright © 2017 alexizh. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-
 //! Project version number for SearchQueryParser.
 FOUNDATION_EXPORT double SearchQueryParserVersionNumber;
 

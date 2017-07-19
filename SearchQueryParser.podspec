@@ -17,8 +17,8 @@ Pod::Spec.new do |s|
 
   s.author             = { "Alex Severyanov" => "alex.severyanov@gmail.com" }
 
-  s.platform = :osx, '10.7'
-  s.platform = :ios, '8.0'
+  s.ios.deployment_target = "8.0"
+  s.osx.deployment_target = "10.9"
 
   s.source       = { :git => "https://github.com/AlexIzh/SearchQueryParser.git", :tag => "#{s.version}" }
 
