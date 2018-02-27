@@ -48,7 +48,7 @@
 /* Begin PBXFileReference section */
 		FA1CBDD51F169CAC003EE451 /* SearchTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SearchTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA1CBDD81F169CAD003EE451 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		FA1CBDDA1F169CAD003EE451 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		FA1CBDDA1F169CAD003EE451 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; usesTabs = 0; };
 		FA1CBDDD1F169CAD003EE451 /* SearchTest.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SearchTest.xcdatamodel; sourceTree = "<group>"; };
 		FA1CBDDF1F169CAD003EE451 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA1CBDE21F169CAD003EE451 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };

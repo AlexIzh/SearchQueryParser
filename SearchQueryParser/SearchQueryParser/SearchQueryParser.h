@@ -6,12 +6,14 @@
 //  Copyright © 2017 alexizh. All rights reserved.
 //
 
+#import <Foundation/Foundation.h>
+
 //! Project version number for SearchQueryParser.
 FOUNDATION_EXPORT double SearchQueryParserVersionNumber;
 
 //! Project version string for SearchQueryParser.
 FOUNDATION_EXPORT const unsigned char SearchQueryParserVersionString[];
 
-// In this header, you should import all the public headers of your framework using statements like #import <SearchQueryParser/PublicHeader.h>
+// In this heiader, you should import all the public headers of your framework using statements like #import <SearchQueryParser/PublicHeader.h>
 
 

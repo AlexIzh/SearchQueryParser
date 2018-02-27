@@ -15,7 +15,7 @@ public enum OperatorType {
 
 public protocol Operator: Hashable {
 	var priority: Int { get }
-	var type: OperatorType { get }
+    var type: OperatorType { get }
 }
 
 public indirect enum QueryOperator<Item: Operator> {
