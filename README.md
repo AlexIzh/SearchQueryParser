@@ -47,3 +47,13 @@ import SearchQueryParser
 let builder = DefaultPredicateBuilder() { NSPredicate(format: "(name LIKE[c] %@) OR (job LIKE[c] %@)", $0, $0) }
 self.predicate = builder.build(from: searchField.stringValue)
 ```
+
+## Installing
+
+### CocoaPods
+
+` pod 'SearchQueryParser' `
+
+### Manually 
+
+Drag'n'drop `SearchQueryParser` directory to your project. 
